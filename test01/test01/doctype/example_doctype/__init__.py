@@ -1,0 +1,1 @@
+# Example DocType module

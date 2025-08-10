@@ -1,0 +1,25 @@
+source,target,context
+API Documentation,توثيق واجهة برمجة التطبيقات,API Documentation page title
+Home,الرئيسية,Navigation breadcrumb
+API Documentation,توثيق واجهة برمجة التطبيقات,Navigation breadcrumb
+Missing required fields: {0},الحقول المطلوبة مفقودة: {0},Validation error message
+Insufficient permissions for {0},صلاحيات غير كافية لـ {0},Permission error message
+Insufficient permissions,صلاحيات غير كافية,Permission error message
+Email and password are required,البريد الإلكتروني وكلمة المرور مطلوبان,Validation error message
+Login successful,تم تسجيل الدخول بنجاح,Success message
+Profile updated successfully,تم تحديث الملف الشخصي بنجاح,Success message
+Current password and new password are required,كلمة المرور الحالية وكلمة المرور الجديدة مطلوبتان,Validation error message
+Current password is incorrect,كلمة المرور الحالية غير صحيحة,Authentication error message
+Password changed successfully,تم تغيير كلمة المرور بنجاح,Success message
+Logged out successfully,تم تسجيل الخروج بنجاح,Success message
+Email, full name, and password are required,البريد الإلكتروني والاسم الكامل وكلمة المرور مطلوبة,Validation error message
+User with this email already exists,المستخدم بهذا البريد الإلكتروني موجود بالفعل,Validation error message
+User registered successfully,تم تسجيل المستخدم بنجاح,Success message
+Record not found,السجل غير موجود,Error message
+Title is required,العنوان مطلوب,Validation error message
+Record created successfully,تم إنشاء السجل بنجاح,Success message
+Record updated successfully,تم تحديث السجل بنجاح,Success message
+Record deleted successfully,تم حذف السجل بنجاح,Success message
+Search query is required,استعلام البحث مطلوب,Validation error message
+test01,اختبار,App title
+desc,وصف,App description

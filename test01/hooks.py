@@ -1,5 +1,5 @@
 app_name = "test01"
-app_title = "Test01"
+app_title = "test01"
 app_publisher = "m.nozili"
 app_description = "de"
 app_email = "m.nozili@fintechsys.net"
@@ -10,15 +10,15 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/test01/css/test01.css"
-# app_include_js = "/assets/test01/js/test01.js"
+# app_include_css = "/assets/test0101/css/test0101.css"
+# app_include_js = "/assets/test0101/js/test0101.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/test01/css/test01.css"
-# web_include_js = "/assets/test01/js/test01.js"
+# web_include_css = "/assets/test0101/css/test0101.css"
+# web_include_js = "/assets/test0101/js/test0101.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "test01/public/scss/website"
+# website_theme_scss = "test0101/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -36,7 +36,7 @@ app_license = "mit"
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "test01/public/icons.svg"
+# app_include_icons = "test0101/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -60,43 +60,43 @@ app_license = "mit"
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "test01.utils.jinja_methods",
-# 	"filters": "test01.utils.jinja_filters"
+# 	"methods": "test0101.utils.jinja_methods",
+# 	"filters": "test0101.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "test01.install.before_install"
-# after_install = "test01.install.after_install"
+# before_install = "test0101.install.before_install"
+# after_install = "test0101.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "test01.uninstall.before_uninstall"
-# after_uninstall = "test01.uninstall.after_uninstall"
+# before_uninstall = "test0101.uninstall.before_uninstall"
+# after_uninstall = "test0101.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "test01.utils.before_app_install"
-# after_app_install = "test01.utils.after_app_install"
+# before_app_install = "test0101.utils.before_app_install"
+# after_app_install = "test0101.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "test01.utils.before_app_uninstall"
-# after_app_uninstall = "test01.utils.after_app_uninstall"
+# before_app_uninstall = "test0101.utils.before_app_uninstall"
+# after_app_uninstall = "test0101.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "test01.notifications.get_notification_config"
+# notification_config = "test0101.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -135,39 +135,39 @@ app_license = "mit"
 
 # scheduler_events = {
 # 	"all": [
-# 		"test01.tasks.all"
+# 		"test0101.tasks.all"
 # 	],
 # 	"daily": [
-# 		"test01.tasks.daily"
+# 		"test0101.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"test01.tasks.hourly"
+# 		"test0101.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"test01.tasks.weekly"
+# 		"test0101.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"test01.tasks.monthly"
+# 		"test0101.tasks.monthly"
 # 	],
 # }
 
-# Testing
+# test01ing
 # -------
 
-# before_tests = "test01.install.before_tests"
+# before_test01s = "test0101.install.before_test01s"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "test01.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "test0101.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "test01.task.get_dashboard_data"
+# 	"Task": "test0101.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -181,13 +181,13 @@ app_license = "mit"
 
 # Request Events
 # ----------------
-# before_request = ["test01.utils.before_request"]
-# after_request = ["test01.utils.after_request"]
+# before_request = ["test0101.utils.before_request"]
+# after_request = ["test0101.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["test01.utils.before_job"]
-# after_job = ["test01.utils.after_job"]
+# before_job = ["test0101.utils.before_job"]
+# after_job = ["test0101.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -217,7 +217,7 @@ app_license = "mit"
 # --------------------------------
 
 # auth_hooks = [
-# 	"test01.auth.validate"
+# 	"test0101.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.
@@ -227,3 +227,13 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+
+website_pages = [
+    {
+        "name": "api-docs",
+        "title": "API Documentation",
+        "template": "templates/pages/api_docs.html",
+        "controller": "templates.pages.api_docs"
+    }
+]

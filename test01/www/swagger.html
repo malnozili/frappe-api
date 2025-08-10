@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test01 App API Documentation</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui.css" />
+    <style>
+        html {
+            box-sizing: border-box;
+            overflow: -moz-scrollbars-vertical;
+            overflow-y: scroll;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body {
+            margin:0;
+            background: #fafafa;
+        }
+        .swagger-ui .topbar {
+            background-color: #2c3e50;
+        }
+        .swagger-ui .topbar .download-url-wrapper .select-label {
+            color: #fff;
+        }
+        .swagger-ui .info .title {
+            color: #2c3e50;
+        }
+        .swagger-ui .scheme-container {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            // Swagger UI configuration
+            const ui = SwaggerUIBundle({
+                url: './swagger.json',
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout",
+                validatorUrl: null,
+                docExpansion: "list",
+                filter: true,
+                showExtensions: true,
+                showCommonExtensions: true,
+                tryItOutEnabled: true,
+                requestInterceptor: function(request) {
+                    // Add CORS headers for local development
+                    request.headers['Access-Control-Allow-Origin'] = '*';
+                    return request;
+                },
+                responseInterceptor: function(response) {
+                    return response;
+                }
+            });
+            
+            // Custom styling and branding
+            const titleElement = document.querySelector('.swagger-ui .info .title');
+            if (titleElement) {
+                titleElement.innerHTML = 'test01 App API Documentation';
+            }
+            
+            // Add custom header
+            const topbar = document.querySelector('.swagger-ui .topbar');
+            if (topbar) {
+                const customHeader = document.createElement('div');
+                customHeader.style.cssText = `
+                    background-color: #34495e;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    font-size: 14px;
+                    border-bottom: 1px solid #2c3e50;
+                `;
+                customHeader.innerHTML = `
+                    <strong>test01 App API v1.0.0</strong> | 
+                    Built with Frappe Framework | 
+                    <a href="https://frappeframework.com" target="_blank" style="color: #3498db;">Frappe Docs</a>
+                `;
+                topbar.parentNode.insertBefore(customHeader, topbar);
+            }
+        };
+    </script>
+</body>
+</html>

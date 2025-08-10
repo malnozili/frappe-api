@@ -1,0 +1,661 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "test01 App API",
+    "description": "REST API for the test01 Frappe application with comprehensive documentation",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "m.nozili@fintechsys.net"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://your-domain.com",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:8000",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/api/method/test01.api.v1.endpoints.user.login": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User Login",
+        "description": "Authenticate user and return API token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "User password"
+                  }
+                }
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "password123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Login successful"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "user": {
+                          "type": "string",
+                          "example": "user@example.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "api_key": {
+                          "type": "string",
+                          "example": "api_key_hash"
+                        },
+                        "api_secret": {
+                          "type": "string",
+                          "example": "api_secret_hash"
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.user.register_user": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User Registration",
+        "description": "Register a new user account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "full_name", "password"],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email address"
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "description": "User full name"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "User password"
+                  },
+                  "mobile_no": {
+                    "type": "string",
+                    "description": "User mobile number"
+                  }
+                }
+              },
+              "example": {
+                "email": "newuser@example.com",
+                "full_name": "Jane Doe",
+                "password": "password123",
+                "mobile_no": "+1234567890"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Registration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User registered successfully"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "newuser@example.com"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "newuser@example.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "Jane Doe"
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.user.get_user_profile": {
+      "get": {
+        "tags": ["User Management"],
+        "summary": "Get User Profile",
+        "description": "Get current user profile information",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "user@example.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "user@example.com"
+                        },
+                        "mobile_no": {
+                          "type": "string",
+                          "example": "+1234567890"
+                        },
+                        "user_image": {
+                          "type": "string",
+                          "example": "/files/user_image.jpg"
+                        },
+                        "last_active": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.example.get_example_data": {
+      "get": {
+        "tags": ["Example Data"],
+        "summary": "Get Example Data",
+        "description": "Retrieve example data records",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of specific record to retrieve",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "description": "Single record"
+                        },
+                        {
+                          "type": "array",
+                          "description": "List of records",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of records (when returning list)"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.example.create_example_data": {
+      "post": {
+        "tags": ["Example Data"],
+        "summary": "Create Example Data",
+        "description": "Create a new example record",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title"],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the record"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the record"
+                  }
+                }
+              },
+              "example": {
+                "title": "Sample Title",
+                "description": "Sample description"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Record created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Record created successfully"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Created record data"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.system.health_check": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Health Check",
+        "description": "Check system health status",
+        "responses": {
+          "200": {
+            "description": "Health check completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": ["healthy", "degraded", "unhealthy"],
+                          "example": "healthy"
+                        },
+                        "database": {
+                          "type": "string",
+                          "enum": ["healthy", "unhealthy"],
+                          "example": "healthy"
+                        },
+                        "redis": {
+                          "type": "string",
+                          "enum": ["healthy", "unhealthy"],
+                          "example": "healthy"
+                        },
+                        "system_info": {
+                          "type": "object",
+                          "properties": {
+                            "python_version": {
+                              "type": "string"
+                            },
+                            "platform": {
+                              "type": "string"
+                            },
+                            "frappe_version": {
+                              "type": "string"
+                            },
+                            "app_version": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/method/test01.api.v1.endpoints.system.get_api_documentation": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Get API Documentation",
+        "description": "Get comprehensive API documentation",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API documentation retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "api_version": {
+                          "type": "string",
+                          "example": "v1"
+                        },
+                        "base_url": {
+                          "type": "string"
+                        },
+                        "endpoints": {
+                          "type": "object",
+                          "description": "Available API endpoints"
+                        },
+                        "authentication": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "API Key"
+                            },
+                            "header": {
+                              "type": "string",
+                              "example": "Authorization: token api_key:api_secret"
+                            }
+                          }
+                        },
+                        "response_format": {
+                          "type": "object",
+                          "description": "Standard response format"
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "API Key authentication using format: token api_key:api_secret"
+      }
+    },
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ExampleRecord": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Record identifier"
+          },
+          "title": {
+            "type": "string",
+            "description": "Record title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Record description"
+          },
+          "creation": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "modified": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last modification timestamp"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "User authentication and registration endpoints"
+    },
+    {
+      "name": "User Management",
+      "description": "User profile and account management endpoints"
+    },
+    {
+      "name": "Example Data",
+      "description": "Example data CRUD operations"
+    },
+    {
+      "name": "System",
+      "description": "System information and health check endpoints"
+    }
+  ]
+}
